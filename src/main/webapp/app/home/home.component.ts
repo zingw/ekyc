@@ -15,10 +15,20 @@ export class HomeComponent implements OnInit, OnDestroy {
   account: Account | null = null;
 
   private readonly destroy$ = new Subject<void>();
+  state: number = 1;
+  stateList: any = [
+    { name: 'step1', colortext: 'red' },
+    { name: 'step2', colortext: 'red' },
+    { name: 'step3', colortext: 'red' },
+    { name: 'step4', colortext: 'red' },
+    { name: 'step5', colortext: 'red' },
+  ];
+  user: any;
 
   constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {
+    this.user = {};
     this.accountService
       .getAuthenticationState()
       .pipe(takeUntil(this.destroy$))
@@ -32,5 +42,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  changeState(number: number) {
+    this.state = number;
   }
 }
