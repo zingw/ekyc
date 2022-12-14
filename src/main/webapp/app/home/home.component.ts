@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -13,21 +13,36 @@ import { Account } from 'app/core/auth/account.model';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   account: Account | null = null;
-
+  // to specify number of slot appears on screen
+  SLOT: number = 5;
   private readonly destroy$ = new Subject<void>();
-  state: number = 1;
-  stateList: any = [
-    { name: 'step1', colortext: 'red' },
-    { name: 'step2', colortext: 'red' },
-    { name: 'step3', colortext: 'red' },
-    { name: 'step4', colortext: 'red' },
-    { name: 'step5', colortext: 'red' },
+  step: number = 1;
+  sourceList: string[] = [
+    'step1',
+    'step2',
+    'step3',
+    'step4',
+    'step5',
+    'step6',
+    'step7',
+    'step8',
+    'step9',
+    'step10',
+    'step11',
+    'step12',
+    'step13',
+    'step14',
+    'step15',
+    'step16',
+    'step17',
   ];
+  trimList: string[] = [];
   user: any;
   imgFrontUploaded = false;
   imgBackUploaded = false;
   fileUploaded = false;
-  imageVerifiedSuccess = false;
+  imageVerifiedSuccess = true;
+
   constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {
@@ -47,9 +62,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  changeState(number: number) {
-    this.state = number;
-  }
+  // changeState(number: number) {
+  //   this.state = number;
+  // }
 
   uploadImage() {
     console.log('image uploaded');
@@ -64,5 +79,34 @@ export class HomeComponent implements OnInit, OnDestroy {
   uploadBackImage() {
     console.log('image Back uploaded');
     this.imgBackUploaded = true;
+  }
+
+  previousStep() {
+    // if curr step is end or start of array then refresh to get a new list
+    if (this.step % this.SLOT == 0) {
+      this.genPreviousSlots();
+    }
+    this.step--;
+  }
+
+  nextStep() {
+    // if curr step is end or start of array then refresh to get a new list
+    if (this.step % this.SLOT == 0) {
+      this.genBehindSlots();
+    }
+    this.step++;
+  }
+
+  private genPreviousSlots() {
+    // 7 / 6 = 1 -> 0 -> 5 || 13/6 = 2 ->
+    const end = Math.ceil(this.step / this.SLOT) * this.SLOT - 1;
+    const start = end - this.SLOT - 1;
+    this.trimList = this.sourceList.splice(start, end - 1);
+  }
+
+  private genBehindSlots() {
+    const end = Math.ceil(this.step / this.SLOT) * this.SLOT - 1;
+    const start = end - this.SLOT - 1;
+    this.trimList = this.sourceList.splice(start, end - 1);
   }
 }

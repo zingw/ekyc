@@ -1,8 +1,8 @@
 <div class="progressbar-wrapper">
   <ul class="progressbar">
-    <li *ngFor="let slide of stateList; let i = index" [ngClass]="this.state >= i + 1 ? 'active' : ''">{{ slide.name }}</li>
+    <li *ngFor="let state of sourceList; let i = index" [ngClass]="step >= i + 1 ? 'active' : ''">{{ state }}</li>
   </ul>
-  <div class="product" *ngIf="state == 1">
+  <div class="product" *ngIf="step == 1">
     <div class="title-product">
       <span>Vui lòng thêm <br /><b>Thông tin của bạn</b></span>
     </div>
@@ -26,13 +26,8 @@
         placeholder="Email"
       />
     </div>
-    <div class="footer-product text-center">
-      <button class="btn btn-primary" (click)="changeState(2)">
-        <fa-icon [icon]="'arrow-right'"></fa-icon>
-      </button>
-    </div>
   </div>
-  <div class="product" *ngIf="state == 2">
+  <div class="product" *ngIf="step == 2">
     <div class="title-product">
       <span>Vui lòng nhập mã xác thực <br /><b>Gửi đến Email của bạn</b></span>
     </div>
@@ -67,16 +62,8 @@
         </div>
       </div>
     </div>
-    <div class="footer-product text-center">
-      <button class="btn btn-primary" (click)="changeState(1)">
-        <fa-icon [icon]="'arrow-left'"></fa-icon>
-      </button>
-      <button class="btn btn-primary" (click)="changeState(3)">
-        <fa-icon [icon]="'arrow-right'"></fa-icon>
-      </button>
-    </div>
   </div>
-  <div class="product" *ngIf="state == 3">
+  <div class="product" *ngIf="step == 3">
     <div class="title-product">
       <span
         >Vui lòng <br /><b>chọn ảnh chân dung</b><br />
@@ -111,16 +98,8 @@
         />
       </div>
     </div>
-    <div class="footer-product text-center">
-      <button class="btn btn-primary" (click)="changeState(2)">
-        <fa-icon [icon]="'arrow-left'"></fa-icon>
-      </button>
-      <button class="btn btn-primary" (click)="changeState(4)">
-        <fa-icon [icon]="'arrow-right'"></fa-icon>
-      </button>
-    </div>
   </div>
-  <div class="product" *ngIf="state == 4">
+  <div class="product" *ngIf="step == 4">
     <div class="title-product">
       <span
         >Vui lòng chụp <br /><b>giấy tờ tùy thân</b><br />
@@ -168,16 +147,8 @@
         </div>
       </div>
     </div>
-    <div class="footer-product text-center">
-      <button class="btn btn-primary" (click)="changeState(2)">
-        <fa-icon [icon]="'arrow-left'"></fa-icon>
-      </button>
-      <button class="btn btn-primary" (click)="changeState(5)">
-        <fa-icon [icon]="'arrow-right'"></fa-icon>
-      </button>
-    </div>
   </div>
-  <div class="product" *ngIf="state == 5">
+  <div class="product" *ngIf="step == 5">
     <div *ngIf="imageVerifiedSuccess" class="verify">
       <fa-icon [icon]="'circle-check'" class="success"></fa-icon>
       <h1>
@@ -194,4 +165,12 @@
       </h1>
     </div>
   </div>
+</div>
+<div class="footer-product text-center">
+  <button class="btn btn-primary" (click)="previousStep()">
+    <fa-icon [icon]="'arrow-left'"></fa-icon>
+  </button>
+  <button class="btn btn-primary" (click)="nextStep()" [disabled]="!imageVerifiedSuccess">
+    <fa-icon [icon]="'arrow-right'"></fa-icon>
+  </button>
 </div>
