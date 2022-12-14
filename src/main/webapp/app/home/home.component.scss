@@ -64,6 +64,7 @@
 }
 .progressbar {
   counter-reset: step;
+  margin-right: 36px;
 }
 .progressbar li:before {
   content: counter(step);
@@ -167,4 +168,18 @@ button fa-icon svg {
 .img-upload .img-back img {
   width: 250px;
   height: 140px;
+}
+.verify {
+  width: 100%;
+  margin-top: 100px;
+  text-align: center;
+}
+.verify fa-icon.success {
+  color: green;
+  font-size: 150px;
+}
+
+.verify fa-icon.failed {
+  color: red;
+  font-size: 150px;
 }

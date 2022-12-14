@@ -177,4 +177,21 @@
       </button>
     </div>
   </div>
+  <div class="product" *ngIf="state == 5">
+    <div *ngIf="imageVerifiedSuccess" class="verify">
+      <fa-icon [icon]="'circle-check'" class="success"></fa-icon>
+      <h1>
+        Khuôn mặt khớp với <br />
+        giấy tờ tùy thân
+      </h1>
+    </div>
+    <div *ngIf="!imageVerifiedSuccess" class="verify">
+      <fa-icon [icon]="'circle-xmark'" class="failed"></fa-icon>
+      <h1>
+        Khuôn mặt không khớp với <br />
+        giấy tờ tùy thân <br />
+        Vui lòng thử lại
+      </h1>
+    </div>
+  </div>
 </div>

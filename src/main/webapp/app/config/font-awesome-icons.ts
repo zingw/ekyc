@@ -43,6 +43,8 @@ import {
   faUpload,
   faArrowRight,
   faRepeat,
+  faCircleCheck,
+  faCircleXmark,
   // jhipster-needle-add-icon-import
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -91,5 +93,7 @@ export const fontAwesomeIcons = [
   faUpload,
   faArrowRight,
   faRepeat,
+  faCircleCheck,
+  faCircleXmark,
   // jhipster-needle-add-icon-import
 ];
