@@ -42,6 +42,7 @@ import {
   faLightbulb,
   faUpload,
   faArrowRight,
+  faRepeat,
   // jhipster-needle-add-icon-import
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -89,5 +90,6 @@ export const fontAwesomeIcons = [
   faLightbulb,
   faUpload,
   faArrowRight,
+  faRepeat,
   // jhipster-needle-add-icon-import
 ];

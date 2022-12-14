@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   user: any;
   imgFrontUploaded = false;
   imgBackUploaded = false;
-
+  imageVerifiedSuccess = false;
   constructor(private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {

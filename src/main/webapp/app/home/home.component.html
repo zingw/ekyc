@@ -27,7 +27,9 @@
       />
     </div>
     <div class="footer-product text-center">
-      <button class="btn btn-primary" (click)="changeState(2)"><fa-icon [icon]="'arrow-right'"></fa-icon></button>
+      <button class="btn btn-primary" (click)="changeState(2)">
+        <fa-icon [icon]="'arrow-right'"></fa-icon>
+      </button>
     </div>
   </div>
   <div class="product" *ngIf="state == 2">
@@ -66,8 +68,12 @@
       </div>
     </div>
     <div class="footer-product text-center">
-      <button class="btn btn-primary" (click)="changeState(1)"><fa-icon [icon]="'arrow-left'"></fa-icon></button>
-      <button class="btn btn-primary" (click)="changeState(3)"><fa-icon [icon]="'arrow-right'"></fa-icon></button>
+      <button class="btn btn-primary" (click)="changeState(1)">
+        <fa-icon [icon]="'arrow-left'"></fa-icon>
+      </button>
+      <button class="btn btn-primary" (click)="changeState(3)">
+        <fa-icon [icon]="'arrow-right'"></fa-icon>
+      </button>
     </div>
   </div>
   <div class="product" *ngIf="state == 3">
@@ -106,8 +112,12 @@
       </div>
     </div>
     <div class="footer-product text-center">
-      <button class="btn btn-primary" (click)="changeState(2)"><fa-icon [icon]="'arrow-left'"></fa-icon></button>
-      <button class="btn btn-primary" (click)="changeState(4)"><fa-icon [icon]="'arrow-right'"></fa-icon></button>
+      <button class="btn btn-primary" (click)="changeState(2)">
+        <fa-icon [icon]="'arrow-left'"></fa-icon>
+      </button>
+      <button class="btn btn-primary" (click)="changeState(4)">
+        <fa-icon [icon]="'arrow-right'"></fa-icon>
+      </button>
     </div>
   </div>
   <div class="product" *ngIf="state == 4">
@@ -132,37 +142,42 @@
           </div>
         </div>
       </div>
-      <div *ngIf="!imgFrontUploaded" style="width: 100%; height: 100%">
-        <div>
-          <fa-icon [icon]="'upload'" (click)="uploadFrontImage()"></fa-icon>
+      <div class="img-upload">
+        <div class="img-front">
+          <div *ngIf="!imgFrontUploaded">
+            <div><fa-icon [icon]="'upload'" (click)="uploadFrontImage()"></fa-icon></div>
+            <div><span>Ảnh mặt trước</span></div>
+          </div>
+          <div *ngIf="imgFrontUploaded">
+            <img
+              src="https://genk.mediacdn.vn/zoom/700_438/139269124445442048/2022/9/20/avatar1663652034151-16636520345541192384502.jpg"
+              alt=""
+            />
+            <div class="d-flex justify-content-center"><small>Ảnh mặt trước</small></div>
+          </div>
         </div>
-        <div><span>Ảnh mặt trước</span></div>
-      </div>
-      <div *ngIf="imgFrontUploaded">
-        <img
-          style="max-width: 100%; max-height: 200px"
-          src="https://genk.mediacdn.vn/zoom/700_438/139269124445442048/2022/9/20/avatar1663652034151-16636520345541192384502.jpg"
-          alt=""
-        />
-      </div>
-      <div *ngIf="!imgBackUploaded" style="width: 100%; height: 100%">
-        <div>
-          <fa-icon [icon]="'upload'" (click)="uploadBackImage()"></fa-icon>
+        <div class="img-back">
+          <div *ngIf="!imgBackUploaded">
+            <div><fa-icon [icon]="'upload'" (click)="uploadBackImage()"></fa-icon></div>
+            <div><span>Ảnh mặt sau </span></div>
+          </div>
+          <div *ngIf="imgBackUploaded">
+            <img
+              src="https://genk.mediacdn.vn/zoom/700_438/139269124445442048/2022/9/20/avatar1663652034151-16636520345541192384502.jpg"
+              alt=""
+            />
+            <div class="d-flex justify-content-center"><small>Ảnh mặt sau</small></div>
+          </div>
         </div>
-        <div><span>Ảnh mặt sau </span></div>
-      </div>
-      <div *ngIf="imgBackUploaded">
-        <img
-          style="max-width: 100%; max-height: 200px"
-          src="https://genk.mediacdn.vn/zoom/700_438/139269124445442048/2022/9/20/avatar1663652034151-16636520345541192384502.jpg"
-          alt=""
-        />
       </div>
     </div>
     <div class="footer-product text-center">
-      <!--      <button class="btn btn-primary" (click)="changeState(2)">Quay Lại</button>-->
-      <button class="btn btn-primary" (click)="changeState(2)"><fa-icon [icon]="'arrow-left'"></fa-icon></button>
-      <button class="btn btn-primary" (click)="changeState(4)"><fa-icon [icon]="'arrow-right'"></fa-icon></button>
+      <button class="btn btn-primary" (click)="changeState(2)">
+        <fa-icon [icon]="'arrow-left'"></fa-icon>
+      </button>
+      <button class="btn btn-primary" (click)="changeState(5)">
+        <fa-icon [icon]="'arrow-right'"></fa-icon>
+      </button>
     </div>
   </div>
 </div>
