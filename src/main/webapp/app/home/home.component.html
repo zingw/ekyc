@@ -145,29 +145,29 @@
       <div class="img-upload">
         <div class="img-front">
           <div *ngIf="!imgFrontUploaded">
-            <div><fa-icon [icon]="'upload'" (click)="uploadFrontImage()"></fa-icon></div>
-            <div><span>Ảnh mặt trước</span></div>
+            <div>
+              <fa-icon [icon]="'upload'" (click)="uploadFrontImage()"></fa-icon>
+            </div>
           </div>
           <div *ngIf="imgFrontUploaded">
             <img
               src="https://genk.mediacdn.vn/zoom/700_438/139269124445442048/2022/9/20/avatar1663652034151-16636520345541192384502.jpg"
               alt=""
             />
-            <div class="d-flex justify-content-center"><small>Ảnh mặt trước</small></div>
           </div>
+          <div class="d-flex justify-content-center"><small>Ảnh mặt trước</small></div>
         </div>
         <div class="img-back">
           <div *ngIf="!imgBackUploaded">
-            <div><fa-icon [icon]="'upload'" (click)="uploadBackImage()"></fa-icon></div>
-            <div><span>Ảnh mặt sau </span></div>
+            <fa-icon [icon]="'upload'" (click)="uploadBackImage()"></fa-icon>
           </div>
           <div *ngIf="imgBackUploaded">
             <img
               src="https://genk.mediacdn.vn/zoom/700_438/139269124445442048/2022/9/20/avatar1663652034151-16636520345541192384502.jpg"
               alt=""
             />
-            <div class="d-flex justify-content-center"><small>Ảnh mặt sau</small></div>
           </div>
+          <div class="d-flex justify-content-center"><small>Ảnh mặt sau</small></div>
         </div>
       </div>
     </div>
