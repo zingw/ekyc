@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private readonly destroy$ = new Subject<void>();
   state: number = 1;
+  fileUploaded = false;
   stateList: any = [
     { name: 'step1', colortext: 'red' },
     { name: 'step2', colortext: 'red' },
@@ -24,6 +25,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     { name: 'step5', colortext: 'red' },
   ];
   user: any;
+  imgFrontUploaded = false;
+  imgBackUploaded = false;
 
   constructor(private accountService: AccountService, private router: Router) {}
 
@@ -46,5 +49,20 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   changeState(number: number) {
     this.state = number;
+  }
+
+  uploadImage() {
+    console.log('image uploaded');
+    this.fileUploaded = true;
+  }
+
+  uploadFrontImage() {
+    console.log('image Front uploaded');
+    this.imgFrontUploaded = true;
+  }
+
+  uploadBackImage() {
+    console.log('image Back uploaded');
+    this.imgBackUploaded = true;
   }
 }

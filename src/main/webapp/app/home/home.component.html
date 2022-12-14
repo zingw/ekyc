@@ -1,78 +1,168 @@
 <div class="progressbar-wrapper">
   <ul class="progressbar">
     <li *ngFor="let slide of stateList; let i = index" [ngClass]="this.state >= i + 1 ? 'active' : ''">{{ slide.name }}</li>
-    <div class="product" *ngIf="state == 1">
-      <div class="title-product mt-3 mb-3">
-        <span>Vui lòng thêm <br /><b>Thông tin của bạn</b></span>
-      </div>
-      <div class="content-product">
-        <input
-          type="text"
-          #phoneNumber="ngModel"
-          class="form-control mt-1 mb-1"
-          id="fullName"
-          name="fullName"
-          [(ngModel)]="user.fullName"
-          placeholder="Nhập họ tên trên CMND/Hộ chiếu"
-        />
-        <input
-          type="text"
-          #email="ngModel"
-          class="form-control mt-1 mb-1"
-          id="email"
-          name="email"
-          [(ngModel)]="user.email"
-          placeholder="Email"
-        />
-      </div>
-      <div class="footer-product mt-3 mb-3 text-center">
-        <button class="btn btn-primary" (click)="changeState(2)">Tiếp theo</button>
-      </div>
-    </div>
-    <div class="product" *ngIf="state == 2">
-      <div class="title-product mt-3 mb-3">
-        <span>Vui lòng nhập mã xác thực <br /><b>Gửi đến Email của bạn</b></span>
-      </div>
-      <div class="content-product">
-        <input
-          type="text"
-          #code="ngModel"
-          class="form-control mt-1 mb-1"
-          id="code"
-          name="code"
-          [(ngModel)]="user.fullName"
-          placeholder="Nhập mã xác thực"
-        />
-        <div class="note">
-          <div class="note-left">left</div>
-          <div class="note-right">right</div>
-        </div>
-      </div>
-      <div class="footer-product mt-3 mb-3 text-center">
-        <button class="btn btn-primary" (click)="changeState(2)">Tiếp theo</button>
-      </div>
-    </div>
-    <div class="product" *ngIf="state == 3">
-      <div class="title-product mt-3 mb-3">
-        <span>Vui lòng <br /><b>chụp ảnh chân dung</b> để xác thực</span>
-      </div>
-      <div class="content-product">
-        <input
-          type="text"
-          class="form-control mt-1 mb-1"
-          id="profile_picture"
-          name="profile_picture"
-          [(ngModel)]="user.fullName"
-          placeholder="Nhập mã xác thực"
-        />
-        <div class="note">
-          <div class="note-left"></div>
-          <div class="note-right"></div>
-        </div>
-      </div>
-      <div class="footer-product mt-3 mb-3 text-center">
-        <button class="btn btn-primary" (click)="changeState(2)">Tiếp theo</button>
-      </div>
-    </div>
   </ul>
+  <div class="product" *ngIf="state == 1">
+    <div class="title-product">
+      <span>Vui lòng thêm <br /><b>Thông tin của bạn</b></span>
+    </div>
+    <div class="content-product">
+      <input
+        type="text"
+        #phoneNumber="ngModel"
+        class="form-control mt-1 mb-1"
+        id="fullName"
+        name="fullName"
+        [(ngModel)]="user.fullName"
+        placeholder="Nhập họ tên trên CMND/Hộ chiếu"
+      />
+      <input
+        type="text"
+        #email="ngModel"
+        class="form-control mt-1 mb-1"
+        id="email"
+        name="email"
+        [(ngModel)]="user.email"
+        placeholder="Email"
+      />
+    </div>
+    <div class="footer-product text-center">
+      <button class="btn btn-primary" (click)="changeState(2)"><fa-icon [icon]="'arrow-right'"></fa-icon></button>
+    </div>
+  </div>
+  <div class="product" *ngIf="state == 2">
+    <div class="title-product">
+      <span>Vui lòng nhập mã xác thực <br /><b>Gửi đến Email của bạn</b></span>
+    </div>
+    <div class="content-product">
+      <input
+        type="text"
+        #code="ngModel"
+        class="form-control mt-1 mb-1"
+        id="code"
+        name="code"
+        [(ngModel)]="user.fullName"
+        placeholder="Nhập mã xác thực"
+      />
+      <div class="note">
+        <div class="note-left">
+          <fa-icon [icon]="'lightbulb'"></fa-icon>
+        </div>
+        <div class="note-right">
+          <small
+            >Mã xác thực đã được gửi đến <strong>{{ user.email }}</strong></small
+          >
+          <br />
+          <small>Vui lòng kiểm tra <strong>hộp thư rác</strong> nếu bạn không thể tìm thấy ở hộp thư đến</small>
+        </div>
+      </div>
+      <div class="resend-email">
+        <div style="margin-right: 10px">
+          <span><u>Gửi lại mã xác thực email</u></span>
+        </div>
+        <div>
+          <fa-icon [icon]="'spinner'"></fa-icon>
+        </div>
+      </div>
+    </div>
+    <div class="footer-product text-center">
+      <button class="btn btn-primary" (click)="changeState(1)"><fa-icon [icon]="'arrow-left'"></fa-icon></button>
+      <button class="btn btn-primary" (click)="changeState(3)"><fa-icon [icon]="'arrow-right'"></fa-icon></button>
+    </div>
+  </div>
+  <div class="product" *ngIf="state == 3">
+    <div class="title-product">
+      <span
+        >Vui lòng <br /><b>chọn ảnh chân dung</b><br />
+        để xác thực</span
+      >
+    </div>
+    <div class="image-tray">
+      <div *ngIf="!fileUploaded">
+        <div>
+          <fa-icon [icon]="'upload'" (click)="uploadImage()"></fa-icon>
+        </div>
+        <div>
+          <span>Chọn ảnh từ <b>thư viện</b></span>
+        </div>
+        <div class="note">
+          <div class="note-left">
+            <fa-icon [icon]="'lightbulb'"></fa-icon>
+          </div>
+          <div style="text-align: left">
+            <div><small>1. Không dùng kính mắt</small></div>
+            <div><small>2. Không đội mũ</small></div>
+            <div><small>3. Hình chân dung đủ sáng và không bị chói</small></div>
+            <div><small>Hình ảnh chân dung chỉ dùng cho mục đích xác thực với CMND/CCCD/Hộ Chiếu</small></div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="fileUploaded">
+        <img
+          style="max-width: 100%; max-height: 200px"
+          src="https://genk.mediacdn.vn/zoom/700_438/139269124445442048/2022/9/20/avatar1663652034151-16636520345541192384502.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="footer-product text-center">
+      <button class="btn btn-primary" (click)="changeState(2)"><fa-icon [icon]="'arrow-left'"></fa-icon></button>
+      <button class="btn btn-primary" (click)="changeState(4)"><fa-icon [icon]="'arrow-right'"></fa-icon></button>
+    </div>
+  </div>
+  <div class="product" *ngIf="state == 4">
+    <div class="title-product">
+      <span
+        >Vui lòng chụp <br /><b>giấy tờ tùy thân</b><br />
+        để xác thực</span
+      >
+    </div>
+    <div class="image-tray">
+      <div *ngIf="!fileUploaded">
+        <div class="note">
+          <div class="note-left">
+            <fa-icon [icon]="'lightbulb'"></fa-icon>
+          </div>
+          <div style="text-align: left">
+            <div><small>Mẹo chụp ảnh giấy tờ tùy thân:</small></div>
+            <div><small>1. Vui lòng chuẩn bị giấy tờ tùy thân gốc</small></div>
+            <div><small>2. Hãy đặt bên trong khung hình</small></div>
+            <div><small>3. Tránh bị mất góc các giấy tờ</small></div>
+            <div><small>4. Tránh bị chói</small></div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!imgFrontUploaded" style="width: 100%; height: 100%">
+        <div>
+          <fa-icon [icon]="'upload'" (click)="uploadFrontImage()"></fa-icon>
+        </div>
+        <div><span>Ảnh mặt trước</span></div>
+      </div>
+      <div *ngIf="imgFrontUploaded">
+        <img
+          style="max-width: 100%; max-height: 200px"
+          src="https://genk.mediacdn.vn/zoom/700_438/139269124445442048/2022/9/20/avatar1663652034151-16636520345541192384502.jpg"
+          alt=""
+        />
+      </div>
+      <div *ngIf="!imgBackUploaded" style="width: 100%; height: 100%">
+        <div>
+          <fa-icon [icon]="'upload'" (click)="uploadBackImage()"></fa-icon>
+        </div>
+        <div><span>Ảnh mặt sau </span></div>
+      </div>
+      <div *ngIf="imgBackUploaded">
+        <img
+          style="max-width: 100%; max-height: 200px"
+          src="https://genk.mediacdn.vn/zoom/700_438/139269124445442048/2022/9/20/avatar1663652034151-16636520345541192384502.jpg"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="footer-product text-center">
+      <!--      <button class="btn btn-primary" (click)="changeState(2)">Quay Lại</button>-->
+      <button class="btn btn-primary" (click)="changeState(2)"><fa-icon [icon]="'arrow-left'"></fa-icon></button>
+      <button class="btn btn-primary" (click)="changeState(4)"><fa-icon [icon]="'arrow-right'"></fa-icon></button>
+    </div>
+  </div>
 </div>
