@@ -129,7 +129,6 @@ button {
 }
 .image-tray img {
   border-radius: 20px;
-  margin-top: 20px;
 }
 .footer-product {
   margin-top: 1px;
@@ -145,24 +144,27 @@ button fa-icon svg {
 }
 .img-upload {
   display: flex;
-  width: 100%;
-  height: 200px;
+  width: 500px;
+  max-height: 140px;
 }
 .img-upload .img-front {
-  width: 50%;
+  width: 250px;
   height: 140px;
   text-align: center;
 }
 .img-upload .img-back {
-  width: 50%;
+  width: 250px;
   height: 140px;
   text-align: center;
 }
 
 .img-upload .img-front img {
-  max-width: 90%;
+  max-width: 95%;
+  width: 250px;
+  height: 140px;
 }
 
 .img-upload .img-back img {
-  max-width: 90%;
+  width: 250px;
+  height: 140px;
 }
