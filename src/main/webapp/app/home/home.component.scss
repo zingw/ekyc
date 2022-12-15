@@ -112,6 +112,7 @@ fa-icon {
 input {
   border-radius: 20px;
   height: 50px;
+  text-align: center;
 }
 button {
   height: 48px;
@@ -185,4 +186,24 @@ button fa-icon svg {
 }
 .red {
   color: red;
+}
+
+.input-icons fa-icon {
+  position: absolute;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.icon {
+  padding: 10px;
+  min-width: 40px;
+  font-size: 18px;
+  color: gray;
+  opacity: 80%;
+}
+input[type='text']::placeholder {
+  text-align: center;
 }

@@ -45,6 +45,10 @@ import {
   faRepeat,
   faCircleCheck,
   faCircleXmark,
+  faCalendarDays,
+  faIdCard,
+  faEnvelope,
+  faCode,
   // jhipster-needle-add-icon-import
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -95,5 +99,10 @@ export const fontAwesomeIcons = [
   faRepeat,
   faCircleCheck,
   faCircleXmark,
+  faUser,
+  faCalendarDays,
+  faIdCard,
+  faEnvelope,
+  faCode,
   // jhipster-needle-add-icon-import
 ];
