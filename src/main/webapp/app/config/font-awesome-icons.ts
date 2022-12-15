@@ -49,6 +49,7 @@ import {
   faIdCard,
   faEnvelope,
   faCode,
+  faMarsDouble,
   // jhipster-needle-add-icon-import
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -104,5 +105,6 @@ export const fontAwesomeIcons = [
   faIdCard,
   faEnvelope,
   faCode,
+  faMarsDouble,
   // jhipster-needle-add-icon-import
 ];
