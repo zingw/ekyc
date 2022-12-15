@@ -165,6 +165,26 @@
       </h1>
     </div>
   </div>
+
+  <div class="product" *ngIf="step == 6">
+    <div class="title-product">
+      <span>Kiểm tra</span><br />
+      <span><b>thông tin cá nhân</b></span>
+    </div>
+    <div class="content-product">
+      <div class="note">
+        <div class="note-left">
+          <fa-icon [icon]="'lightbulb'"></fa-icon>
+        </div>
+        <div class="note-right">
+          <small>Hãy chắn chắn rằng những thông tin bên dưới trùng khớp với thông tin thể hiện trên giấy tờ tùy thân</small>
+        </div>
+      </div>
+      <input type="text" class="form-control mt-1 mb-1" placeholder="Họ và tên" />
+      <input type="text" class="form-control mt-1 mb-1" placeholder="Ngày sinh" />
+      <div></div>
+    </div>
+  </div>
 </div>
 <div class="footer-product text-center">
   <button class="btn btn-primary" (click)="previousStep()" [disabled]="reachStart">
