@@ -42,6 +42,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   imgBackUploaded = false;
   fileUploaded = false;
   imageVerifiedSuccess = true;
+  reachStart = true;
+  reachEnd = false;
+  reached = 1;
+  styleList: string = 'red';
 
   constructor(private accountService: AccountService, private router: Router) {}
 
@@ -51,6 +55,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .getAuthenticationState()
       .pipe(takeUntil(this.destroy$))
       .subscribe(account => (this.account = account));
+    this.trimList = this.sourceList.slice(0, this.SLOT);
   }
 
   login(): void {
@@ -61,10 +66,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
-  // changeState(number: number) {
-  //   this.state = number;
-  // }
 
   uploadImage() {
     console.log('image uploaded');
@@ -82,31 +83,41 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   previousStep() {
-    // if curr step is end or start of array then refresh to get a new list
-    if (this.step % this.SLOT == 0) {
-      this.genPreviousSlots();
+    if (this.step == 1) {
+      this.reachStart = true;
+      return;
+    } else {
+      this.reachStart = false;
+      this.reachEnd = false;
+      if ((this.step - 1) % this.SLOT == 0) {
+        const start = this.step - this.SLOT - 1;
+        const end = start + this.SLOT;
+        this.trimList = this.sourceList.slice(start, end);
+      }
+      this.step--;
     }
-    this.step--;
   }
 
   nextStep() {
-    // if curr step is end or start of array then refresh to get a new list
-    if (this.step % this.SLOT == 0) {
-      this.genBehindSlots();
+    if (this.step == this.sourceList.length) {
+      this.reachEnd = true;
+      return;
+    } else {
+      this.reachEnd = false;
+      this.reachStart = false;
+      if (this.step % this.SLOT == 0) {
+        const start = this.step;
+        const end = start + this.SLOT;
+        this.trimList = this.sourceList.slice(start, end);
+      }
+      this.step++;
+      this.reached++;
     }
-    this.step++;
   }
 
-  private genPreviousSlots() {
-    // 7 / 6 = 1 -> 0 -> 5 || 13/6 = 2 ->
-    const end = Math.ceil(this.step / this.SLOT) * this.SLOT - 1;
-    const start = end - this.SLOT - 1;
-    this.trimList = this.sourceList.splice(start, end - 1);
-  }
-
-  private genBehindSlots() {
-    const end = Math.ceil(this.step / this.SLOT) * this.SLOT - 1;
-    const start = end - this.SLOT - 1;
-    this.trimList = this.sourceList.splice(start, end - 1);
+  finished(i: number): boolean {
+    let reach = this.reached % this.SLOT >= i + 1;
+    console.log(reach);
+    return reach;
   }
 }

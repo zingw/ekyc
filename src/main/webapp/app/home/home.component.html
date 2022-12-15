@@ -1,6 +1,6 @@
 <div class="progressbar-wrapper">
   <ul class="progressbar">
-    <li *ngFor="let state of sourceList; let i = index" [ngClass]="step >= i + 1 ? 'active' : ''">{{ state }}</li>
+    <li *ngFor="let slide of trimList; let i = index" [ngClass]="step >= i + 1 ? 'active' : ''">{{ slide }}</li>
   </ul>
   <div class="product" *ngIf="step == 1">
     <div class="title-product">
@@ -167,10 +167,10 @@
   </div>
 </div>
 <div class="footer-product text-center">
-  <button class="btn btn-primary" (click)="previousStep()">
+  <button class="btn btn-primary" (click)="previousStep()" [disabled]="reachStart">
     <fa-icon [icon]="'arrow-left'"></fa-icon>
   </button>
-  <button class="btn btn-primary" (click)="nextStep()" [disabled]="!imageVerifiedSuccess">
+  <button class="btn btn-primary" (click)="nextStep()" [disabled]="!imageVerifiedSuccess || reachEnd">
     <fa-icon [icon]="'arrow-right'"></fa-icon>
   </button>
 </div>
