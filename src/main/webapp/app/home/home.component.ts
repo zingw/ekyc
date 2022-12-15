@@ -44,8 +44,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   imageVerifiedSuccess = true;
   reachStart = true;
   reachEnd = false;
-  reached = 1;
-  styleList: string = 'red';
 
   constructor(private accountService: AccountService, private router: Router) {}
 
@@ -111,13 +109,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.trimList = this.sourceList.slice(start, end);
       }
       this.step++;
-      this.reached++;
     }
   }
 
-  finished(i: number): boolean {
-    let reach = this.reached % this.SLOT >= i + 1;
-    console.log(reach);
-    return reach;
-  }
+  // ongoing(): boolean {
+  //   console.log(this.step);
+  //   return this.step % this.SLOT == step + 1;
+  // }
 }

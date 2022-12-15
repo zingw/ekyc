@@ -62,14 +62,14 @@
   //background: #fff url(user.svg) no-repeat center center;
   background-size: 60%;
 }
-.progressbar {
-  counter-reset: step;
-  margin-right: 36px;
-}
-.progressbar li:before {
-  content: counter(step);
-  counter-increment: step;
-}
+//.progressbar {
+//  counter-reset: step;
+//  margin-right: 36px;
+//}
+//.progressbar li:before {
+//  content: counter(step);
+//  counter-increment: step;
+//}
 .product {
   width: 500px;
   height: auto;

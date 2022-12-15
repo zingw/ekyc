@@ -1,6 +1,6 @@
 <div class="progressbar-wrapper">
   <ul class="progressbar">
-    <li *ngFor="let slide of trimList; let i = index" [ngClass]="step >= i + 1 ? 'active' : ''">{{ slide }}</li>
+    <li *ngFor="let slide of trimList; let i = index" [class.active]="true">{{ slide }}</li>
   </ul>
   <div class="product" *ngIf="step == 1">
     <div class="title-product">
