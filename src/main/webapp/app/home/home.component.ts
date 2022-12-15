@@ -93,6 +93,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.trimList = this.sourceList.slice(start, end);
       }
       this.step--;
+      // console.log('now on index :',this.getStepIndex())
+      // console.log('now on step :', this.step)
     }
   }
 
@@ -109,11 +111,15 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.trimList = this.sourceList.slice(start, end);
       }
       this.step++;
+      // console.log('now on index :',this.getStepIndex())
+      // console.log('now on step :', this.step)
     }
   }
-
-  // ongoing(): boolean {
-  //   console.log(this.step);
-  //   return this.step % this.SLOT == step + 1;
-  // }
+  getStepIndex(): number {
+    if (this.step % this.SLOT == 0) {
+      return this.SLOT - 1;
+    } else {
+      return (this.step % this.SLOT) - 1;
+    }
+  }
 }
