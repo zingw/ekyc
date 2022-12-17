@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   // to specify number of slot appears on screen
   SLOT: number = 5;
   private readonly destroy$ = new Subject<void>();
-  step: number = 7;
+  step: number = 9;
   sourceList: string[] = [
     'step1',
     'step2',

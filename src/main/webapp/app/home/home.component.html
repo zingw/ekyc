@@ -267,6 +267,29 @@
       </div>
     </div>
   </div>
+  <div class="product" *ngIf="step == 9">
+    <div class="title-product">
+      <span>Tạo</span><br />
+      <span><b>tài khoản đăng nhập</b></span>
+    </div>
+    <div class="input-icons">
+      <fa-icon [icon]="'user'"></fa-icon>
+      <input type="text" class="form-control mt-1 mb-1" placeholder="Tài khoản đăng nhập" />
+    </div>
+    <div class="note">
+      <div class="note-left">
+        <fa-icon [icon]="'lightbulb'"></fa-icon>
+      </div>
+      <div class="note-right">
+        <small>Tài khoản đăng nhập có thể</small><br />
+        <small>Bao gồm kí tự chữ (từ a đến z) hoặc số</small><br />
+        <small>Kí tự đầu phải là chữ</small><br />
+        <small>Từ 6 - 35 ký tự</small><br />
+        <small>Phải là tiếng việt không dấu</small><br />
+        <small>Không có khoảng cách giữa các kí tự</small>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="footer-product text-center">
   <button class="btn btn-primary" (click)="previousStep()" [disabled]="reachStart">

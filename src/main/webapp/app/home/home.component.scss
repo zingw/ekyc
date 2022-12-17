@@ -125,6 +125,11 @@
 .note .note-left {
   width: 36px;
 }
+.note .note-left fa-icon {
+  position: relative;
+  top: 12%;
+  left: 25%;
+}
 
 .resend-email {
   display: flex;
