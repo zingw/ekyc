@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,6 +15,6 @@ export class HomeService {
     formData.append('frontImg', files[0], files[0].name);
     formData.append('backImg', files[1], files[1].name);
     formData.append('imgWithUser', files[2], files[2].name);
-    return this.http.post<any>(this.baseUrl + 'verify-customer', formData, { observe: 'response' });
+    return this.http.post<any>(this.baseUrl + '/verify-customer', formData, { observe: 'response' });
   }
 }
