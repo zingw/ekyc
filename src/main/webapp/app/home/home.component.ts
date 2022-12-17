@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/auth/account.model';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'jhi-home',
@@ -40,7 +41,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   reachStart = true;
   reachEnd = false;
 
-  constructor(private accountService: AccountService, private router: Router) {}
+  files: File[] = [];
+
+  constructor(private accountService: AccountService, private router: Router, private homeService: HomeService) {}
 
   ngOnInit(): void {
     this.user = {};
@@ -58,21 +61,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
-  }
-
-  uploadImage() {
-    console.log('image uploaded');
-    this.fileUploaded = true;
-  }
-
-  uploadFrontImage() {
-    console.log('image Front uploaded');
-    this.imgFrontUploaded = true;
-  }
-
-  uploadBackImage() {
-    console.log('image Back uploaded');
-    this.imgBackUploaded = true;
   }
 
   previousStep() {
@@ -110,11 +98,30 @@ export class HomeComponent implements OnInit, OnDestroy {
       // console.log('now on step :', this.step)
     }
   }
+
   getStepIndex(): number {
     if (this.step % this.SLOT == 0) {
       return this.SLOT - 1;
     } else {
       return (this.step % this.SLOT) - 1;
     }
+  }
+
+  selectFiles($event: any) {
+    this.files.push($event.target.files[0]);
+    if (this.files.length == 3) {
+      this.uploadAllFiles();
+    }
+  }
+
+  uploadAllFiles() {
+    this.homeService.upload(this.files).subscribe({
+      next: res => {
+        console.log(res);
+      },
+      error: res => {
+        console.log(res);
+      },
+    });
   }
 }

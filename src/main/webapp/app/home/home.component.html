@@ -81,7 +81,8 @@
     <div class="image-tray">
       <div *ngIf="!fileUploaded">
         <div>
-          <fa-icon [icon]="'upload'" (click)="uploadImage()"></fa-icon>
+          <fa-icon [icon]="'upload'"></fa-icon>
+          <input type="file" (change)="selectFiles($event)" />
         </div>
         <div>
           <span>Chọn ảnh từ <b>thư viện</b></span>
@@ -133,7 +134,8 @@
         <div class="img-front">
           <div *ngIf="!imgFrontUploaded">
             <div>
-              <fa-icon [icon]="'upload'" (click)="uploadFrontImage()"></fa-icon>
+              <fa-icon [icon]="'upload'"></fa-icon>
+              <input type="file" (change)="selectFiles($event)" />
             </div>
           </div>
           <div *ngIf="imgFrontUploaded">
@@ -143,7 +145,8 @@
         </div>
         <div class="img-back">
           <div *ngIf="!imgBackUploaded">
-            <fa-icon [icon]="'upload'" (click)="uploadBackImage()"></fa-icon>
+            <fa-icon [icon]="'upload'"></fa-icon>
+            <input type="file" (change)="selectFiles($event)" />
           </div>
           <div *ngIf="imgBackUploaded">
             <img
