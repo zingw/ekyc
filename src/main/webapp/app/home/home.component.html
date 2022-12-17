@@ -290,6 +290,30 @@
       </div>
     </div>
   </div>
+  <div class="product" *ngIf="step == 10">
+    <div class="title-product">
+      <span>Tạo</span><br />
+      <span><b>mật khẩu đăng nhập</b></span>
+    </div>
+    <div class="input-icons">
+      <fa-icon [icon]="'eye-slash'"></fa-icon>
+      <input type="password" class="form-control mt-1 mb-1" placeholder="Mật khẩu đăng nhập" />
+      <fa-icon [icon]="'eye-slash'"></fa-icon>
+      <input type="password" class="form-control mt-1 mb-1" placeholder="Nhập lại mật khẩu đăng nhập" />
+    </div>
+    <div class="note">
+      <div class="note-left">
+        <fa-icon [icon]="'lightbulb'"></fa-icon>
+      </div>
+      <div class="note-right">
+        <small>Mật khẩu đăng nhập cần có ít nhất</small><br />
+        <small>8 ký tự</small><br />
+        <small>Một chữ viết hoa</small><br />
+        <small>Một chữ số</small><br />
+        <small>Một ký tự đặc biệt</small><br />
+      </div>
+    </div>
+  </div>
 </div>
 <div class="footer-product text-center">
   <button class="btn btn-primary" (click)="previousStep()" [disabled]="reachStart">
