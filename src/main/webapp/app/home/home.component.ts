@@ -16,25 +16,19 @@ export class HomeComponent implements OnInit, OnDestroy {
   // to specify number of slot appears on screen
   SLOT: number = 5;
   private readonly destroy$ = new Subject<void>();
-  step: number = 10;
+  step: number = 1;
   sourceList: string[] = [
-    'step1',
-    'step2',
-    'step3',
-    'step4',
-    'step5',
-    'step6',
-    'step7',
-    'step8',
-    'step9',
-    'step10',
-    'step11',
-    'step12',
-    'step13',
-    'step14',
-    'step15',
-    'step16',
-    'step17',
+    'Thêm thông tin',
+    'Xác thực',
+    'Chọn ảnh',
+    'Giấy tờ tùy thân',
+    '',
+    'Thông tin cá nhân',
+    'Kiểm tra thông tin',
+    'Kiểm tra địa chỉ',
+    'Tạo tài khoản',
+    'Tạo mật khẩu',
+    'Hoàn tất',
   ];
   trimList: string[] = [];
   user: any;
@@ -42,6 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   imgBackUploaded = false;
   fileUploaded = false;
   imageVerifiedSuccess = true;
+  createAccountSuccess = true;
   reachStart = true;
   reachEnd = false;
 

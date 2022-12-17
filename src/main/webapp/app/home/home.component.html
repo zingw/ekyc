@@ -314,6 +314,20 @@
       </div>
     </div>
   </div>
+  <div class="product" *ngIf="step == 11">
+    <div *ngIf="createAccountSuccess" class="verify">
+      <fa-icon [icon]="'thumbs-up'" class="success"></fa-icon>
+      <h1>Khởi tạo tài khoản thành công</h1>
+      <br />
+      <small>Cám ơn bạn đã đăng ký mở tài khoản</small>
+    </div>
+    <div *ngIf="!createAccountSuccess" class="verify">
+      <fa-icon [icon]="'thumbs-down'" class="failed"></fa-icon>
+      <h1>Khởi tạo tài khoản không thành công</h1>
+      <br />
+      <small>Bạn vui lòng thử lại</small>
+    </div>
+  </div>
 </div>
 <div class="footer-product text-center">
   <button class="btn btn-primary" (click)="previousStep()" [disabled]="reachStart">

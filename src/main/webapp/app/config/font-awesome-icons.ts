@@ -52,6 +52,8 @@ import {
   faMarsDouble,
   faLocationDot,
   faEyeSlash,
+  faThumbsUp,
+  faThumbsDown,
   // jhipster-needle-add-icon-import
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -110,5 +112,7 @@ export const fontAwesomeIcons = [
   faMarsDouble,
   faLocationDot,
   faEyeSlash,
+  faThumbsUp,
+  faThumbsDown,
   // jhipster-needle-add-icon-import
 ];
