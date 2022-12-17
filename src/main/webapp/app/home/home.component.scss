@@ -125,11 +125,6 @@
 .note .note-left {
   width: 36px;
 }
-.note .note-left fa-icon {
-  position: relative;
-  top: 12%;
-  left: 25%;
-}
 
 .resend-email {
   display: flex;
@@ -253,8 +248,8 @@ button fa-icon svg {
 }
 
 .input-icons {
-  width: 100%;
-  margin-bottom: 10px;
+  width: 90%;
+  margin: auto auto 36px;
 }
 
 input::placeholder {
@@ -273,6 +268,9 @@ input[type='radio'] {
   border: 1px solid lightgray;
   height: auto;
   justify-content: center;
+  width: 90%;
+  margin: auto;
+  padding-top: 20px;
 }
 .wrapper-input input {
   margin-right: 10px;

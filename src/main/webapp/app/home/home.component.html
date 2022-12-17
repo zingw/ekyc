@@ -18,6 +18,7 @@
           [(ngModel)]="user.fullName"
           placeholder="Nhập họ tên trên CMND/Hộ chiếu"
         />
+        <small style="color: red" *ngIf="phoneNumber.touched"> Họ tên không được để trống </small>
         <fa-icon [icon]="'envelope'"></fa-icon>
         <input
           type="text"
